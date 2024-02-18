@@ -1,12 +1,16 @@
-const {readFile, writeFile} = require('fs');
+const http = require('http');
 
+const server = http.createServer((req, res) => {
+    if(req.url === '/'){
+        res.end('welcomw to our home page')
+    }
+    if(req.url === '/about'){
+        res.end('here is our about page.')
+    }
+    res.end(`
+    <h1>OOPs</h1>
+    <a href="/"> back home</a>
+    `)
+});
 
-const first = readFile('./content/first.txt', 'utf-8');
-const second = readFile('./content/subfolder/test.txt', 'utf-8');
-
-console.log(first, second);
-
-writeFile('./content/result-sync.txt', `here is the result : ${first}, ${second}`,
-{flag: 'a'});
-
-
+server.listen(8000);
