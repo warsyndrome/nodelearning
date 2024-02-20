@@ -1,19 +1,25 @@
+// const EventEmitter = require('events');
+
+// const customEmitter = new EventEmitter()
+
+// customEmitter.on('response', (name, id) => {
+//     console.log(`data recieved ${name} ${id}`)
+// })
+
+// customEmitter.on('response', () => {
+//     console.log(`some other logic here `)
+// })
+
+
+// customEmitter.emit(`response`, 'john', 34);
+
+
+
+
 const http = require('http');
 
-const server = http.createServer((req, res) => {
-    if (req.url === '/') {
-        res.end('welcomw to our home page')
-    }
-    if (req.url === '/about') {
-        res.end('here is our about page.')
-    }
-    res.end(`
-    <h1>OOPs</h1>
-    <a href="/"> back home</a>
-    `);
-});
-
+const server = http.createServer()
+server.on('request', (req,res) => {
+    res.end('Welcome');
+})
 server.listen(8000); 
-
-
-//2:26:40
